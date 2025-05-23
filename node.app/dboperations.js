@@ -1,95 +1,97 @@
 var config = require('./dbconfig');
 const sql = require('mssql');
 
-async function getCarros() {
-    try{
+async function getProdutos() {
+    try {
         let pool = await sql.connect(config);
-        let lojas = await pool.request().query("SELECT * FROM carros");
-        return lojas.recordsets[0];
+        let produtos = await pool.request().query("SELECT * FROM Produtos");
+        return produtos.recordsets[0];
     } 
     catch (error) {
         console.log(error);
     }
 }
 
-async function updateCarro(carro) {
-    try{
+async function updateProduto(produto) {
+    try {
         let pool = await sql.connect(config);
-        let loja = pool.request
-        .input('input_parameter', sql.Int, carro.Id)
-        .query(`UPDATE [dbo].[Carros]
+        let result = pool.request()
+        .input('input_parameter', sql.Int, produto.Id)
+        .query(`UPDATE [dbo].[Produtos]
         SET
-        [Fabricante] = '${carro.Fabricante}',
-        [Ano] = '${carro.Ano}',
-        [Marca] = '${carro.Marca}',
-        [Cidade] = '${carro.Cidade}',
-        [Imagem] = '${carro.Imagem}'
+        [Nome] = '${produto.Nome}',
+        [Codigo] = '${produto.Codigo}',
+        [Preco] = ${produto.Preco},
+        [Descricao] = '${produto.Descricao}',
+        [QuantidadeEstoque] = ${produto.QuantidadeEstoque},
+        [Avaliacao] = ${produto.Avaliacao},
+        [Categoria] = '${produto.Categoria}'
         WHERE Id = @input_parameter`);
-        return loja.recordsets;
+        return result.recordsets;
     } catch (error) {
         console.log(error);
     }
 }
 
-async function getCarro(carroId) {
+async function getProduto(produtoId) {
     try {
         let pool = await sql.connect(config);
-        let lojas = await pool.request()
-            .input('input_parameter', sql.Int, carro.id)
-            .query('SELECT * FROM Carros WHERE Id = @input_parameter');
-        return loja.recordsets;
+        let produto = await pool.request()
+            .input('input_parameter', sql.Int, produtoId)
+            .query('SELECT * FROM Produtos WHERE Id = @input_parameter');
+        return produto.recordsets[0];
     } catch (error) {
         console.log(error);
     }
 }
 
-async function delCarro(carroId) {
+async function delProduto(produtoId) {
     try {
         let pool = await sql.connect(config);
-        let loja = pool.request
-        .input('input_parameter', sql.Int, carro.Id)
-        .query('DELETE FROM [dbo].[Carros] WHERE Id = @input_parameter');
-        return loja.recordsets;
+        let result = pool.request()
+        .input('input_parameter', sql.Int, produtoId)
+        .query('DELETE FROM [dbo].[Produtos] WHERE Id = @input_parameter');
+        return result.recordsets;
     } catch (error) {
         console.log(error);
     }
 }
 
-async function addCarro(carro) {
+async function addProduto(produto) {
     try {
         let pool = await sql.connect(config);
-        let loja = pool.request
-        .input('input_parameter', sql.Int, carro.Id)
-        .query(`INSERT INTO [dbo].[Carros]
+        let result = pool.request()
+        .query(`INSERT INTO [dbo].[Produtos]
         (
-            [Id],
-            [Fabricante],
-            [Ano],
-            [Marca],
-            [Cidade],
-            [Imagem]
+            [Nome],
+            [Codigo],
+            [Preco],
+            [Descricao],
+            [QuantidadeEstoque],
+            [Avaliacao],
+            [Categoria]
         )
         VALUES
         (
-            '${carro.Id}',
-            '${carro.Fabricante}',
-            '${carro.Ano}',
-            '${carro.Marca}',
-            '${carro.Cidade}',
-            '${carro.Imagem}'
+            '${produto.Nome}',
+            '${produto.Codigo}',
+            ${produto.Preco},
+            '${produto.Descricao}',
+            ${produto.QuantidadeEstoque},
+            ${produto.Avaliacao},
+            '${produto.Categoria}'
         )`);
-        return loja.recordsets;
-
+        return result.recordsets;
     } catch (error) {
         console.log(error);
     }
 }
 
 module.exports = {
-    getCarros: getCarros,
-    updateCarro: updateCarro,
-    getCarro: getCarro,
-    delCarro: delCarro,
-    addCarro: addCarro
+    getProdutos: getProdutos,
+    updateProduto: updateProduto,
+    getProduto: getProduto,
+    delProduto: delProduto,
+    addProduto: addProduto
 }
 

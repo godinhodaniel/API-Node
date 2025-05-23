@@ -1,5 +1,5 @@
 var Db = require('./dboperations');
-var Carro = require('./carro');
+var Produto = require('./produto');
 const dboperations = require('./dboperations');
 
 var express = require('express');
@@ -18,39 +18,65 @@ router.use((request, response, next) => {
     next(); 
 });
 
-router.route('/carros').get((request, response) => {
-    dboperations.getCarros().then(result => {
-        response.json(result(0));
-    })
+router.route('/produtos').get((request, response) => {
+    dboperations.getProdutos().then(result => {
+        response.json(result);
+    }).catch(error => {
+        console.error('Erro ao buscar produtos:', error);
+        response.status(500).json({ error: 'Erro ao buscar produtos' });
+    });
 })
 
-router.route('/carros').patch((request, response) => {
-    let carro = { ...request.body };
+router.route('/produtos').patch((request, response) => {
+    let produto = { ...request.body };
 
-    dboperations.updateCarro(carro).then(result => {
+    dboperations.updateProduto(produto).then(result => {
         response.status(204).json(result);
+    }).catch(error => {
+        console.error('Erro ao atualizar produto:', error);
+        response.status(500).json({ error: 'Erro ao atualizar produto' });
     });
 })
 
-router.route('/carros/:id').get((request, response) => {
-    dboperations.getCarro(request.params.id).then(result => {
-        response.json(result(0));
+router.route('/produtos/:id').get((request, response) => {
+    dboperations.getProduto(request.params.id).then(result => {
+        response.json(result);
+    }).catch(error => {
+        console.error('Erro ao buscar produto:', error);
+        response.status(500).json({ error: 'Erro ao buscar produto' });
     });
 })
 
-router.route('/carros/:id').delete((request, response) => {
-    dboperations.delCarro(request.params.id).then(result => {
+router.route('/produtos/:id').delete((request, response) => {
+    dboperations.delProduto(request.params.id).then(result => {
         response.status(204).json(result);
+    }).catch(error => {
+        console.error('Erro ao deletar produto:', error);
+        response.status(500).json({ error: 'Erro ao deletar produto' });
     });
 })
 
-router.route('/carros').post((request, response) => {
-    let carro = { ...request.body };
-    dboperations.addCarro(carro).then(result => {
+router.route('/produtos').post((request, response) => {
+    let produto = { ...request.body };
+    dboperations.addProduto(produto).then(result => {
         response.status(201).json(result);
+    }).catch(error => {
+        console.error('Erro ao adicionar produto:', error);
+        response.status(500).json({ error: 'Erro ao adicionar produto' });
     });
 })
 
+router.route('/produtos/:id').put((request, response) => {
+    let produto = { ...request.body };
+    produto.Id = request.params.id;
+
+    dboperations.updateProduto(produto).then(result => {
+        response.status(204).json(result);
+    }).catch(error => {
+        console.error('Erro ao atualizar produto:', error);
+        response.status(500).json({ error: 'Erro ao atualizar produto' });
+    });
+})
 
 var port = process.env.PORT || 8090;
 app.listen(port)
