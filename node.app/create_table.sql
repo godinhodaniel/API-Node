@@ -6,5 +6,6 @@ CREATE TABLE Produtos (
     Descricao NVARCHAR(MAX),
     QuantidadeEstoque INT NOT NULL,
     Avaliacao DECIMAL(3, 2),
-    Categoria NVARCHAR(100)
+    Categoria NVARCHAR(100),
+    Imagem NVARCHAR(MAX)
 );

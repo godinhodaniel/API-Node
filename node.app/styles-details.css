@@ -1,0 +1,44 @@
+/* Details page specific styles */
+.logo-placeholder {
+  width: 120px;
+  height: 40px;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.footer-section {
+  background: #f8f9fa;
+  padding: 20px 0;
+}
+.credit-title {
+  color: #007bff;
+  font-weight: bold;
+}
+.user-icon {
+  display: flex;
+  align-items: center;
+}
+.footer-section a i {
+  vertical-align: middle;
+  color: #333;
+  transition: color 0.2s;
+}
+.footer-section a:hover i {
+  color: #007bff;
+}
+img.img-fluid.rounded.shadow {
+  max-width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  background: #f0f0f0;
+  border: 1px solid #e0e0e0;
+}
+.placeholder-glow .placeholder {
+  display: block;
+  height: 1.2em;
+  margin-bottom: 0.5em;
+  background: #e0e0e0;
+  border-radius: 4px;
+} 
