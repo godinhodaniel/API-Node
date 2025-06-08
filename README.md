@@ -19,12 +19,12 @@ Siga os passos abaixo para configurar o ambiente de desenvolvimento:
 
 1.  **Clone o repositório para a sua máquina local:**
     ```bash
-    git clone <URL_DO_SEU_REPOSITORIO>
+    git clone <https://github.com/godinhodaniel/API-Node>
     ```
 
 2.  **Acesse o diretório do projeto:**
     ```bash
-    cd <NOME_DO_SEU_PROJETO>
+    cd <NodeApi>
     ```
 
 3.  **Instale as dependências do Node.js:**
