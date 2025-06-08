@@ -71,4 +71,25 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* Add Product Card Styles */
+.add-product-card {
+  border: 2px dashed #198754;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.add-product-card:hover {
+  background-color: #e8f5e9;
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-product-card .bi-plus-circle {
+  transition: transform 0.3s ease;
+}
+
+.add-product-card:hover .bi-plus-circle {
+  transform: scale(1.1);
 } 

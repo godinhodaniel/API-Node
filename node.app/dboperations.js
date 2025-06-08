@@ -4,7 +4,7 @@ const sql = require('mssql');
 async function getProdutos() {
     try {
         let pool = await sql.connect(config);
-        let produtos = await pool.request().query("SELECT * FROM Produtos");
+        let produtos = await pool.request().query("SELECT TOP 12 * FROM Produtos ORDER BY Id DESC");
         return produtos.recordsets[0];
     } 
     catch (error) {
@@ -25,7 +25,8 @@ async function updateProduto(produto) {
         [Descricao] = '${produto.Descricao}',
         [QuantidadeEstoque] = ${produto.QuantidadeEstoque},
         [Avaliacao] = ${produto.Avaliacao},
-        [Categoria] = '${produto.Categoria}'
+        [Categoria] = '${produto.Categoria}',
+        [Imagem] = '${produto.Imagem}'
         WHERE Id = @input_parameter`);
         return result.recordsets;
     } catch (error) {
@@ -39,9 +40,10 @@ async function getProduto(produtoId) {
         let produto = await pool.request()
             .input('input_parameter', sql.Int, produtoId)
             .query('SELECT * FROM Produtos WHERE Id = @input_parameter');
-        return produto.recordsets[0];
+        return produto.recordsets[0][0];
     } catch (error) {
         console.log(error);
+        throw error;
     }
 }
 
@@ -69,7 +71,8 @@ async function addProduto(produto) {
             [Descricao],
             [QuantidadeEstoque],
             [Avaliacao],
-            [Categoria]
+            [Categoria],
+            [Imagem]
         )
         VALUES
         (
@@ -79,7 +82,8 @@ async function addProduto(produto) {
             '${produto.Descricao}',
             ${produto.QuantidadeEstoque},
             ${produto.Avaliacao},
-            '${produto.Categoria}'
+            '${produto.Categoria}',
+            '${produto.Imagem}'
         )`);
         return result.recordsets;
     } catch (error) {

@@ -11,7 +11,7 @@ const config = {
         encrypt: false,
         database: 'CadastroProdutos'
     },
-    port: 49906
+    port: 49907
 }
 
 module.exports = config

@@ -12,7 +12,11 @@
   <!-- Header -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <div class="logo-placeholder me-3">LOGO</div>
+      <div class="logo-container d-flex align-items-center">
+        <a href="index.html" style="text-decoration: none;">
+          <i class="bi bi-display me-2" style="font-size: 2.5rem; color: #6c757d;"></i>
+        </a>
+      </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -37,7 +41,67 @@
         <h1 class="product-title mb-4"></h1>
         <p class="product-description mb-4"></p>
         <h3 class="product-price mb-4"></h3>
-        <button class="btn btn-primary btn-lg">Add to Cart</button>
+        <div class="product-details">
+          <p><strong>Product Code:</strong> <span class="product-code"></span></p>
+          <p><strong>Stock:</strong> <span class="product-stock"></span> units</p>
+          <p><strong>Rating:</strong> <span class="product-rating"></span> / 5.0</p>
+          <p><strong>Category:</strong> <span class="product-category"></span></p>
+        </div>
+        <div class="mt-4">
+          <a href="index.html" class="btn btn-secondary me-2">
+            <i class="bi bi-arrow-left"></i> Back to Home
+          </a>
+          <button class="btn btn-warning btn-edit me-2" data-bs-toggle="modal" data-bs-target="#editProductModal">
+            <i class="bi bi-pencil-square"></i> Edit
+          </button>
+          <button class="btn btn-danger btn-delete" data-bs-toggle="modal" data-bs-target="#deleteProductModal">
+            <i class="bi bi-trash"></i> Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Product Modal -->
+  <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="editProductForm" class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input class="form-control mb-2" name="Nome" placeholder="Name" required>
+          <input class="form-control mb-2" name="Codigo" placeholder="Code" required>
+          <input class="form-control mb-2" name="Preco" placeholder="Price" type="number" step="0.01" required>
+          <input class="form-control mb-2" name="Descricao" placeholder="Description">
+          <input class="form-control mb-2" name="QuantidadeEstoque" placeholder="Stock" type="number" required>
+          <input class="form-control mb-2" name="Avaliacao" placeholder="Rating" type="number" step="0.01">
+          <input class="form-control mb-2" name="Categoria" placeholder="Category">
+          <input class="form-control mb-2" name="Imagem" placeholder="Image URL">
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-warning">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Product Modal -->
+  <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteProductModalLabel">Confirm Deletion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this product?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+        </div>
       </div>
     </div>
   </div>
@@ -48,6 +112,9 @@
       <div class="row">
         <div class="col-md-6">
           <h6>Sobre</h6>
+          <p>Este portal é um projeto acadêmico desenvolvido por Daniel Godinho, como parte das atividades do curso de Análise e Desenvolvimento de Sistemas.
+
+            O objetivo foi aplicar na prática os conhecimentos adquiridos em sala de aula, desde a etapa de análise para a pesquisa e seleção de produtos relevantes no nicho gamer, até o desenvolvimento de um catálogo de tecnologia funcional e bem estruturado. Cada item apresentado foi cuidadosamente escolhido para refletir as demandas e interesses pessoais, unindo a teoria do curso a um tema de grande interesse pessoal.</p>
           <p></p>
           <p></p>
         </div>
@@ -55,10 +122,7 @@
           <h6 class="credit-title">Autoria</h6>
           <div class="d-flex align-items-center mb-2">
             <span class="user-icon me-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#333" class="bi bi-person-circle" viewBox="0 0 16 16">
-                <path d="M13.468 12.37C12.758 11.226 11.482 10.5 10 10.5s-2.758.726-3.468 1.87A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
-                <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
-              </svg>
+              <i class="bi bi-person" style="font-size: 4rem; color: #6c757d;"></i>
             </span>
             <div>
               <div><span class="fw-bold">Aluno:</span> Daniel Godinho</div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Iphone Store - Home</title>
+  <title>Doctor Tech - Home</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="styles-home.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -12,7 +12,11 @@
   <!-- Header -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <div class="logo-placeholder me-3">LOGO</div>
+      <div class="logo-container d-flex align-items-center">
+        <a href="index.html" style="text-decoration: none;">
+          <i class="bi bi-display me-2" style="font-size: 2.5rem; color: #6c757d;"></i>
+        </a>
+      </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,6 +54,15 @@
   <!-- Product Grid -->
   <section class="container my-4">
     <div class="row g-3">
+      <!-- Add Product Card -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card h-100 add-product-card" data-bs-toggle="modal" data-bs-target="#addProductModal" style="cursor: pointer;">
+          <div class="card-body d-flex flex-column align-items-center justify-content-center text-center">
+            <i class="bi bi-plus-circle" style="font-size: 3rem; color: #198754;"></i>
+            <h5 class="card-title mt-3">Add New Product</h5>
+          </div>
+        </div>
+      </div>
       <!-- Products will be loaded dynamically here -->
     </div>
   </section>
@@ -66,6 +79,9 @@
       <div class="row">
         <div class="col-md-6">
           <h6>Sobre</h6>
+          <p>Este portal é um projeto acadêmico desenvolvido por Daniel Godinho, como parte das atividades do curso de Análise e Desenvolvimento de Sistemas.
+
+            O objetivo foi aplicar na prática os conhecimentos adquiridos em sala de aula, desde a etapa de análise para a pesquisa e seleção de produtos relevantes no nicho gamer, até o desenvolvimento de um catálogo de tecnologia funcional e bem estruturado. Cada item apresentado foi cuidadosamente escolhido para refletir as demandas e interesses pessoais, unindo a teoria do curso a um tema de grande interesse pessoal.</p>
           <p></p>
           <p></p>
         </div>
@@ -73,10 +89,7 @@
           <h6 class="credit-title">Autoria</h6>
           <div class="d-flex align-items-center mb-2">
             <span class="user-icon me-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#333" class="bi bi-person-circle" viewBox="0 0 16 16">
-                <path d="M13.468 12.37C12.758 11.226 11.482 10.5 10 10.5s-2.758.726-3.468 1.87A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
-                <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
-              </svg>
+              <i class="bi bi-person" style="font-size: 4rem; color: #6c757d;"></i>
             </span>
             <div>
               <div><span class="fw-bold">Aluno:</span> Daniel Godinho</div>
@@ -94,6 +107,58 @@
       </div>
     </div>
   </footer>
+
+  <!-- Add Product Modal -->
+  <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="addProductForm" class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addProductModalLabel">Add New Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="productName" class="form-label">Name</label>
+            <input class="form-control" id="productName" name="Nome" required>
+          </div>
+          <div class="mb-3">
+            <label for="productCode" class="form-label">Code</label>
+            <input class="form-control" id="productCode" name="Codigo" required>
+          </div>
+          <div class="mb-3">
+            <label for="productPrice" class="form-label">Price</label>
+            <input class="form-control" id="productPrice" name="Preco" type="number" step="0.01" required>
+          </div>
+          <div class="mb-3">
+            <label for="productDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="productDescription" name="Descricao" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="productStock" class="form-label">Stock</label>
+            <input class="form-control" id="productStock" name="QuantidadeEstoque" type="number" required>
+          </div>
+          <div class="mb-3">
+            <label for="productRating" class="form-label">Rating</label>
+            <input class="form-control" id="productRating" name="Avaliacao" type="number" step="0.01" min="0" max="5">
+          </div>
+          <div class="mb-3">
+            <label for="productCategory" class="form-label">Category</label>
+            <input class="form-control" id="productCategory" name="Categoria">
+          </div>
+          <div class="mb-3">
+            <label for="productImage" class="form-label">Image URL</label>
+            <input class="form-control" id="productImage" name="Imagem" type="url">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Add Product
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="app.js"></script>

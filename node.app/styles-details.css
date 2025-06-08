@@ -9,16 +9,17 @@
   font-weight: bold;
 }
 .footer-section {
-  background: #f8f9fa;
-  padding: 20px 0;
+  background-color: #f8f9fa;
+  padding: 40px 0;
+  margin-top: 60px;
 }
 .credit-title {
   color: #007bff;
   font-weight: bold;
+  margin-bottom: 15px;
 }
 .user-icon {
-  display: flex;
-  align-items: center;
+  color: #6c757d;
 }
 .footer-section a i {
   vertical-align: middle;
@@ -41,4 +42,75 @@ img.img-fluid.rounded.shadow {
   margin-bottom: 0.5em;
   background: #e0e0e0;
   border-radius: 4px;
+}
+
+.product-image {
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.product-description {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.product-price {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.product-details {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.product-details p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.product-details strong {
+    color: #495057;
+    min-width: 120px;
+    display: inline-block;
+}
+
+.btn-edit, .btn-delete {
+    padding: 8px 20px;
+    font-weight: 500;
+}
+
+.btn-edit:hover {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-delete:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+@media (max-width: 768px) {
+    .product-title {
+        font-size: 2rem;
+    }
+    
+    .product-details {
+        padding: 15px;
+    }
+    
+    .product-details p {
+        font-size: 1rem;
+    }
 } 
