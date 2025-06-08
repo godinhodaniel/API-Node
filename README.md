@@ -1,55 +1,71 @@
-Este é um projeto de API simples desenvolvido em Node.js para gerenciar um cadastro de produtos. Ele utiliza um arquivo de backup (.bak) como banco de dados.
+# API de Produtos em Node.js
 
-🚀 Começando
+Este é um projeto de API simples desenvolvido em Node.js para gerenciar um cadastro de produtos. Ele utiliza um arquivo de backup (`.bak`) como banco de dados para persistência dos dados.
+
+## 🚀 Começando
+
 Estas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
 
-✅ Pré-requisitos
-Antes de começar, você precisará ter as seguintes ferramentas instaladas em sua máquina:
+### ✅ Pré-requisitos
 
-Node.js (que inclui o npm)
-Um editor de código de sua preferência (ex: VS Code)
-A extensão Live Server para o VS Code (ou similar)
-⚙️ Instalação
+Antes de começar, você precisará ter as seguintes ferramentas instaladas em sua máquina:
+* [Node.js](https://nodejs.org/en/) (que inclui o npm)
+* Um editor de código de sua preferência (ex: [VS Code](https://code.visualstudio.com/))
+* A extensão [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) para o VS Code (ou similar para o seu editor)
+
+### ⚙️ Instalação
+
 Siga os passos abaixo para configurar o ambiente de desenvolvimento:
 
-Clone o repositório:
+1.  **Clone o repositório para a sua máquina local:**
+    ```bash
+    git clone <URL_DO_SEU_REPOSITORIO>
+    ```
 
-Snippet de código
+2.  **Acesse o diretório do projeto:**
+    ```bash
+    cd <NOME_DO_SEU_PROJETO>
+    ```
 
-git clone https://github.com/seu-usuario/seu-repositorio.git
-Acesse o diretório do projeto:
+3.  **Instale as dependências do Node.js:**
+    ```bash
+    npm install
+    ```
 
-Bash
+## ▶️ Executando o Projeto
 
-cd seu-repositorio
-Instale as dependências do Node.js:
+Para colocar a aplicação em funcionamento, o backend (servidor) e o frontend (interface do usuário) devem ser iniciados separadamente.
 
-Bash
+### 1. Iniciando o Servidor (Backend)
 
-npm install
-▶️ Executando o Projeto
-Para colocar a aplicação em funcionamento, siga estes passos:
+O servidor Node.js é o coração da aplicação, responsável por toda a lógica de negócio.
 
-Inicie o servidor Node.js:
+* **Navegue até a pasta do servidor:**
+    ```bash
+    cd node.app
+    ```
+* **Execute o script para iniciar o servidor:**
+    ```bash
+    npm run start
+    ```
+    (ou `npm run dev`, dependendo de como o seu arquivo `package.json` está configurado).
 
-Primeiro, navegue até a pasta do servidor:
-Bash
+O terminal deverá indicar que o servidor está rodando, geralmente na porta `3000` ou `3001`.
 
-cd node.app
-Em seguida, execute o script para iniciar o servidor:
-Bash
+### 2. Abrindo a Interface do Usuário (Frontend)
 
-npm run start
-(ou npm run dev, dependendo de como seu package.json está configurado).
-Abra a interface do usuário (frontend):
+A interface do usuário é um arquivo HTML que consome os dados do servidor.
 
-Volte para o diretório raiz do projeto.
-Clique com o botão direito no seu arquivo index.html.
-Selecione a opção "Open with Live Server". Isso abrirá a página no seu navegador padrão.
-🗃️ Banco de Dados
-O banco de dados utilizado neste projeto é um arquivo de backup chamado DB.bak. Este arquivo contém todos os dados dos produtos e é utilizado pela API para as operações de leitura, inserção, atualização e exclusão.
+* No seu editor de código (VS Code), clique com o botão direito no arquivo `index.html` (ou o arquivo HTML principal).
+* Selecione a opção **"Open with Live Server"**.
 
-Certifique-se de que o arquivo DB.bak esteja no local esperado pelo servidor para que a aplicação funcione corretamente.
+Isso abrirá a página no seu navegador padrão, e você poderá interagir com a aplicação.
+
+## 🗃️ Banco de Dados
+
+O banco de dados utilizado neste projeto é um arquivo de backup chamado **`DB.bak`**.
+
+Este arquivo contém todos os dados dos produtos e é utilizado pela API para as operações de **CRUD** (Criar, Ler, Atualizar e Excluir). Certifique-se de que o arquivo `DB.bak` esteja no local esperado pelo servidor para que a aplicação funcione corretamente.
 ![{45023D0E-49F2-433D-A830-6DD8C018085A}](https://github.com/user-attachments/assets/d9c7047c-2bfd-401c-ab2f-ce1386bdf13c)
 ![{7A9F2E2B-3550-4116-8B6D-04C35D779D70}](https://github.com/user-attachments/assets/77c2bb0a-1363-4ec8-95f3-8b313eaa98ac)
 ![{36186504-FAC3-4B54-A875-15981039A2EF}](https://github.com/user-attachments/assets/89282856-d212-4c21-a45e-46c12e42f9a4)
